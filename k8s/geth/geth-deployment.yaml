@@ -7,7 +7,7 @@ spec:
     - ReadWriteOnce
   resources:
     limits:
-      storage: 2TBi
+      storage: 2Ti
   storageClassName: premium-rwo # SSD drive
 ---
 apiVersion: apps/v1
