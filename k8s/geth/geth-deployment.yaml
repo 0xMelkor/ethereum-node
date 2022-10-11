@@ -3,7 +3,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: geth-node-ssd-volume
 spec:
-  volumeName: geth-node-ssd-volume
   accessModes:
     - ReadWriteOnce
   resources:
