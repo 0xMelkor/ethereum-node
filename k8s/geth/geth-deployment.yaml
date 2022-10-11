@@ -5,6 +5,11 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  resources:
+    limits:
+      storage: 2Ti
+    requests:
+      storage: 2Ti
   storageClassName: premium-rwo # SSD drive
 ---
 apiVersion: apps/v1
