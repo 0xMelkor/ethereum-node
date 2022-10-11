@@ -29,7 +29,7 @@ spec:
             - "--mainnet"
             - "--ws"
             - "--rpc"
-            - "--syncmode=full"
+            - "--syncmode=snap" # TODO: turn to "full"
           ports:
             - containerPort: 8545
               name: rpc-port
