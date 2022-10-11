@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: geth-node-ssd-volume
 spec:
+  volumeName: geth-node-ssd-volume
   accessModes:
     - ReadWriteOnce
   resources:
@@ -56,5 +57,8 @@ spec:
           volumeMounts:
             - mountPath: "/.ethereum"
               name: geth-node-ssd-volume
-
+      volumes:
+        - name: geth-node-ssd-volume
+          persistentVolumeClaim:
+            claimName: geth-node-ssd-volume
 
