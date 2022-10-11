@@ -9,6 +9,7 @@ spec:
   selector:
     app: crystal-mev
     comp: geth-node-pod
+  loadBalancerIP: 34.170.58.62
   ports:
   - name: p2p-tcp-endpoint
     port: 30303
