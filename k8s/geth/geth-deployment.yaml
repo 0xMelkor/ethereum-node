@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geth-deployment
+  labels:
+    app: crystal-mev
+    comp: geth-node-deployment
+spec:
+  selector:
+    matchLabels:
+      app: crystal-mev
+      comp: geth-node-pod
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: crystal-mev
+        comp: geth-node-pod
+    spec:
+      containers:
+        - name: geth-node-pod
+          image: ethereum/client-go:stable
+          resources:
+            requests:
+              cpu: 1000m
+          args:
+            # TODO: Provide additional args for fine tuning
+            - "--mainnet"
+            - "--ws"
+            - "--rpc"
+            - "--syncmode=full"
+          ports:
+            - containerPort: 8545
+              name: rpc-port
+            - containerPort: 8546
+              name: ws-port
+            - containerPort: 30303
+              name: peers-port-udp
+              protocol: UDP
+            - containerPort: 30303
+              name: peers-port-tcp
+              protocol: TCP
+          volumeMounts:
+            - mountPath: "/.ethereum"
+              name: geth-node-ssd-volume
+---
+kind: PersistentVolumeClaim
+metadata:
+  name: geth-node-ssd-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    limits:
+      storage: 2TBi
+  storageClassName: premium-rwo # SSD drive
