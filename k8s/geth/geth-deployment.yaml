@@ -4,7 +4,6 @@ metadata:
   name: geth-deployment
   labels:
     app: crystal-mev
-    comp: geth-node-deployment
 spec:
   selector:
     matchLabels:
@@ -37,10 +36,10 @@ spec:
             - containerPort: 8546
               name: ws-port
             - containerPort: 30303
-              name: peers-port-udp
+              name: p2p-port-udp
               protocol: UDP
             - containerPort: 30303
-              name: peers-port-tcp
+              name: p2p-port-tcp
               protocol: TCP
           volumeMounts:
             - mountPath: "/.ethereum"
