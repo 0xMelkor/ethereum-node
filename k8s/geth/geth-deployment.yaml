@@ -6,6 +6,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   resources:
+    storage: 2Ti
     limits:
       storage: 2Ti
   storageClassName: premium-rwo # SSD drive
