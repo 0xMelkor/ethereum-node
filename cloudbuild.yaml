@@ -1,28 +1,28 @@
 steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Geth P2P LoadBalancer
-  args: ['apply', '-f', 'k8s/geth-p2p-service.yaml']
+  args: ['apply', '-f', 'k8s/geth/geth-p2p-service.yaml']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Geth RPC service
-  args: ['apply', '-f', 'k8s/geth-rpc-service.yaml']
+  args: ['apply', '-f', 'k8s/geth/geth-rpc-service.yaml']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Geth WebSocket service
-  args: ['apply', '-f', 'k8s/geth-ws-service.yaml']
+  args: ['apply', '-f', 'k8s/geth/geth-ws-service.yaml']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Geth node deployment
-  args: ['apply', '-f', 'k8s/geth-deployment.yaml']
+  args: ['apply', '-f', 'k8s/geth/geth-deployment.yaml']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
