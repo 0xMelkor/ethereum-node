@@ -28,3 +28,6 @@ steps:
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 timeout: 3600s
+options:
+  logging: CLOUD_LOGGING_ONLY
+
