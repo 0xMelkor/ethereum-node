@@ -1,4 +1,15 @@
 apiVersion: apps/v1
+kind: PersistentVolumeClaim
+metadata:
+  name: geth-node-ssd-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    limits:
+      storage: 2TBi
+  storageClassName: premium-rwo # SSD drive
+---
 kind: Deployment
 metadata:
   name: geth-deployment
@@ -44,14 +55,5 @@ spec:
           volumeMounts:
             - mountPath: "/.ethereum"
               name: geth-node-ssd-volume
----
-kind: PersistentVolumeClaim
-metadata:
-  name: geth-node-ssd-volume
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    limits:
-      storage: 2TBi
-  storageClassName: premium-rwo # SSD drive
+
+
