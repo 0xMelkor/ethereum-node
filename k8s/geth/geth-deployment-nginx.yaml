@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geth-deployment-nginx
+  labels:
+    app: crystal-mev
+spec:
+  selector:
+    matchLabels:
+      app: crystal-mev
+      comp: geth-node-pod
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: crystal-mev
+        comp: geth-node-pod
+    spec:
+      containers:
+        - name: geth-node-pod
+          image: nginx:latest
+          resources:
+            limits:
+              cpu: 500m
+              memory: 16Gi
+            requests:
+              cpu: 100m
+              memory: 16Gi
+          ports:
+            - containerPort: 8545
+              name: rpc-port
+            - containerPort: 8546
+              name: ws-port
+            - containerPort: 30303
+              name: p2p-port-udp
+              protocol: UDP
+            - containerPort: 30303
+              name: p2p-port-tcp
+              protocol: TCP
+
