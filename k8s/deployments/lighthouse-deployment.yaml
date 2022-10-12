@@ -25,7 +25,7 @@ spec:
             - "lighthouse"
           args:
             - "beacon_node"
-            - "network=mainnet"
+            - "--network=mainnet"
             - "--execution-endpoint=http://geth-beacon-service:8551"
             - "--execution-jwt=/.ethereum/geth/jwtsecret" # TODO: Provide secret
           resources:
