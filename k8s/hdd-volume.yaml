@@ -8,4 +8,6 @@ spec:
   resources:
     limits:
       storage: 2Ti
+    requests: 
+      storage: 650Gi
   storageClassName: standard-rwo
