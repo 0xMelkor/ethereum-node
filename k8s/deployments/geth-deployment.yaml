@@ -48,7 +48,7 @@ spec:
               name: p2p-port-tcp
               protocol: TCP
             - containerPort: 8551
-              name: execution-port-tcp
+              name: exec-port-tcp
               protocol: TCP
           volumeMounts:
             - mountPath: "/.ethereum"
