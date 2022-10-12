@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: geth-beacon-service
+  name: geth-execution-service
   labels:
     app: crystal-mev
 spec:
@@ -10,7 +10,7 @@ spec:
     app: crystal-mev
     comp: geth-node-pod
   ports:
-    - name: rpc-endpoint
+    - name: execution-endpoint
       port: 8551
       protocol: TCP
       targetPort: 8551
