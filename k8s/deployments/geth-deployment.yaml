@@ -24,7 +24,7 @@ spec:
           args:
             # TODO: Provide additional args for fine tuning
             - "--mainnet"
-            - "--authrpc.port 8551"
+            #- "--authrpc.port 8551"
             - "--authrpc.addr lighthouse-deployment"
             - "--authrpc.vhosts lighthouse-deployment"
             - "--authrpc.jwtsecret /.ethereum/geth/jwtsecret"
