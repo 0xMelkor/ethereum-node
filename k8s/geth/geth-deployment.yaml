@@ -28,11 +28,8 @@ spec:
             - "--rpc"
             - "--syncmode=snap" # TODO: turn to "full"
           resources:
-            limits:
-              cpu: 4000m
-              memory: 16Gi
             requests:
-              cpu: 1000m
+              cpu: 100m
               memory: 16Gi
           ports:
             - containerPort: 8545
