@@ -30,6 +30,7 @@ spec:
             - "--ws"
             - "--http"
             - "--syncmode=snap" # TODO: turn to "full"
+            - "--verbosity=5"
           resources:
             limits:
               cpu: 500m
