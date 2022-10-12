@@ -25,7 +25,7 @@ spec:
             - "--mainnet"
             - "--authrpc.port=8551"
             - "--authrpc.vhosts=*"
-            - "--authrpc.jwtsecret=/etc/jwt/jwt.hex"
+            - "--authrpc.jwtsecret=/etc/jwt/jwtsecret"
             - "--ws"
             - "--http"
             - "--syncmode=snap" # TODO: turn to "full"

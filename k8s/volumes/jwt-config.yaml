@@ -4,4 +4,4 @@ kind: ConfigMap
 metadata:
   name: jwt-config
 data:
-  jwt.hex: 3bacf3337bb0552423934f2a2bfd8d352b5c0d6dc4c4c1a809a997bf856a309e
+  jwtsecret: "a6347bd5ac4e2c5191fdc25892b831b9438ebaf90db4f8e706638db596261f93"
