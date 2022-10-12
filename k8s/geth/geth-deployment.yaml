@@ -21,9 +21,6 @@ spec:
       containers:
         - name: geth-node-pod
           image: ethereum/client-go:stable
-          resources:
-            requests:
-              cpu: 500m
           args:
             # TODO: Provide additional args for fine tuning
             - "--mainnet"
@@ -43,9 +40,9 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: "/.ethereum"
-              name: geth-node-ssd-volume
+              name: geth-node-hdd-volume
       volumes:
-        - name: geth-node-ssd-volume
+        - name: geth-node-hdd-volume
           persistentVolumeClaim:
-            claimName: geth-node-ssd-volume
+            claimName: geth-node-hdd-volume
 

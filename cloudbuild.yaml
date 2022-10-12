@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/kubectl'
-  id: SSD volume
-  args: ['apply', '-f', 'k8s/ssd-volume.yaml']
+  id: HDD volume
+  args: ['apply', '-f', 'k8s/hdd-volume.yaml']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'

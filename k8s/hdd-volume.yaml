@@ -5,9 +5,8 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   resources:
     limits:
       storage: 2Ti
-    requests:
-      storage: 2Ti
-  storageClassName: premium-rwo # SSD drive
+  storageClassName: standard-rwo
