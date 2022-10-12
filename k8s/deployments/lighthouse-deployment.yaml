@@ -22,6 +22,8 @@ spec:
         - name: lighthouse-pod
           image: sigp/lighthouse:latest-modern
           args:
+            - "lighthouse"
+            - "beacon_node"
             - "--network mainnet"
             - "--execution-endpoint http://geth-beacon-service:8551"
             - "--execution-jwt /.ethereum/geth/jwtsecret"
