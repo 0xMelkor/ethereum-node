@@ -27,6 +27,10 @@ spec:
             - "--ws"
             - "--rpc"
             - "--syncmode=snap" # TODO: turn to "full"
+          resources:
+            requests:
+              cpu: 1000m
+              memory: 16Gi
           ports:
             - containerPort: 8545
               name: rpc-port
