@@ -7,7 +7,7 @@ spec:
     - ReadWriteOnce
   resources:
     limits:
-      storage: 2Ti
+      storage: 100Gi # TODO: Upgrade quotas on gcloud
     requests: 
-      storage: 650Gi
+      storage: 50Gi
   storageClassName: standard-rwo

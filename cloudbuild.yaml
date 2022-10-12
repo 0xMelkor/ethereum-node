@@ -13,19 +13,19 @@ steps:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Geth P2P TCP LoadBalancer
-#  args: ['apply', '-f', 'k8s/geth/geth-p2p-tcp-service.yaml']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Geth P2P UDP LoadBalancer
-#  args: ['apply', '-f', 'k8s/geth/geth-p2p-udp-service.yaml']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Geth P2P TCP LoadBalancer
+  args: ['apply', '-f', 'k8s/geth/geth-p2p-tcp-service.yaml']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Geth P2P UDP LoadBalancer
+  args: ['apply', '-f', 'k8s/geth/geth-p2p-udp-service.yaml']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Geth RPC service

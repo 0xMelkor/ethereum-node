@@ -39,9 +39,9 @@ spec:
               name: rpc-port
             - containerPort: 8546
               name: ws-port
-            #- containerPort: 30303
-            #  name: p2p-port-udp
-            #  protocol: UDP
+            - containerPort: 30303
+              name: p2p-port-udp
+              protocol: UDP
             - containerPort: 30303
               name: p2p-port-tcp
               protocol: TCP
