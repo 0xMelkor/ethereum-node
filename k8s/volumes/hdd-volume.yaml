@@ -4,7 +4,7 @@ metadata:
   name: hdd-volume
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     limits:
       storage: 400Gi # TODO: Upgrade quotas on gcloud
