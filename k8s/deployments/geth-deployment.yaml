@@ -21,9 +21,11 @@ spec:
       containers:
         - name: geth-node-pod
           image: ethereum/client-go:stable
+          command:
+            - "geth"
           args: 
             - "--mainnet"
-            - "--authrpc.addr=geth-execution-service"
+            - "--authrpc.addr=localhost"
             - "--authrpc.port=8551"
             - "--authrpc.vhosts=*"
             - "--authrpc.jwtsecret=/etc/jwt/jwtsecret"
