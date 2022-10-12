@@ -21,13 +21,12 @@ spec:
       containers:
         - name: geth-node-pod
           image: ethereum/client-go:stable
-          args:
-            # TODO: Provide additional args for fine tuning
+          args: 
             - "--mainnet"
-            #- "--authrpc.port 8551"
-            - "--authrpc.addr lighthouse-deployment"
-            - "--authrpc.vhosts lighthouse-deployment"
-            - "--authrpc.jwtsecret /.ethereum/geth/jwtsecret"
+            - "--authrpc.port=8551"
+            - "--authrpc.addr=lighthouse-deployment"
+            - "--authrpc.vhosts=lighthouse-deployment"
+            - "--authrpc.jwtsecret=/.ethereum/geth/jwtsecret"
             - "--ws"
             - "--http"
             - "--syncmode=snap" # TODO: turn to "full"

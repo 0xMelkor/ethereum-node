@@ -25,8 +25,9 @@ spec:
             - "lighthouse"
           args:
             - "beacon_node"
-            - "--execution-endpoint http://geth-beacon-service:8551"
-            #- "--execution-jwt /.ethereum/geth/jwtsecret" # TODO: Provide secret
+            - "network=mainnet"
+            - "--execution-endpoint=http://geth-beacon-service:8551"
+            - "--execution-jwt=/.ethereum/geth/jwtsecret" # TODO: Provide secret
           resources:
             limits:
               cpu: 500m
