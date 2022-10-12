@@ -24,6 +24,10 @@ spec:
           args:
             # TODO: Provide additional args for fine tuning
             - "--mainnet"
+            - "--authrpc.port 8551"
+            - "--authrpc.addr lighthouse-deployment"
+            - "--authrpc.vhosts lighthouse-deployment"
+            - "--authrpc.jwtsecret /.ethereum/geth/jwtsecret"
             - "--ws"
             - "--http"
             - "--syncmode=snap" # TODO: turn to "full"
@@ -45,11 +49,14 @@ spec:
             - containerPort: 30303
               name: p2p-port-tcp
               protocol: TCP
+            - containerPort: 8551
+              name: beacon-port-tcp
+              protocol: TCP
           volumeMounts:
             - mountPath: "/.ethereum"
-              name: geth-node-hdd-volume
+              name: hdd-volume
       volumes:
-        - name: geth-node-hdd-volume
+        - name: hdd-volume
           persistentVolumeClaim:
-            claimName: geth-node-hdd-volume
+            claimName: hdd-volume
 

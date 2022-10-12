@@ -1,42 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   id: HDD volume
-  args: ['apply', '-f', 'k8s/hdd-volume.yaml']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Geth node deployment
-  args: ['apply', '-f', 'k8s/geth/geth-deployment.yaml']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Geth P2P TCP LoadBalancer
-  args: ['apply', '-f', 'k8s/geth/geth-p2p-tcp-service.yaml']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Geth P2P UDP LoadBalancer
-  args: ['apply', '-f', 'k8s/geth/geth-p2p-udp-service.yaml']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Geth RPC service
-  args: ['apply', '-f', 'k8s/geth/geth-rpc-service.yaml']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Geth WebSocket service
-  args: ['apply', '-f', 'k8s/geth/geth-ws-service.yaml']
+  args: ['apply', '-f', 'k8s/volumes, k8s/deployments, k8s/cluster-ip, k8s/load-balancers']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'

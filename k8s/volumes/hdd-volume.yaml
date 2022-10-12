@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: geth-node-hdd-volume
+  name: hdd-volume
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     limits:
-      storage: 100Gi # TODO: Upgrade quotas on gcloud
+      storage: 400Gi # TODO: Upgrade quotas on gcloud
     requests: 
       storage: 50Gi
   storageClassName: standard-rwo

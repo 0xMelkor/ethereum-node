@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lighthouse-beacon-tcp-service
+  labels:
+    app: crystal-mev
+spec:
+  type: LoadBalancer
+  selector:
+    app: crystal-mev
+    comp: lighthouse-pod
+  loadBalancerIP: 34.170.58.62
+  ports:
+    - name: beacon-tcp-endpoint
+      port: 9000
+      protocol: TCP
+      targetPort: 9000
