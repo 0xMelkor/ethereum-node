@@ -10,7 +10,6 @@ spec:
     app: crystal-mev
     comp: geth-node-pod
   ports:
-    - name: execution-endpoint
-      port: 8551
+    - port: 8551
       protocol: TCP
       targetPort: 8551
