@@ -1,14 +1,14 @@
 steps:
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: HDD volume
-#  args: ['apply', '-f', 'k8s/hdd-volume.yaml']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: HDD volume
+  args: ['apply', '-f', 'k8s/hdd-volume.yaml']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Geth node deployment
-  args: ['apply', '-f', 'k8s/geth/geth-deployment-nginx.yaml']
+  args: ['apply', '-f', 'k8s/geth/geth-deployment.yaml']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
