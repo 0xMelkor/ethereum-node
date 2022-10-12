@@ -21,8 +21,9 @@ spec:
       containers:
         - name: lighthouse-pod
           image: sigp/lighthouse:latest-modern
-          args:
+          command:
             - "lighthouse"
+          args:
             - "beacon_node"
             - "--execution-endpoint http://geth-beacon-service:8551"
             #- "--execution-jwt /.ethereum/geth/jwtsecret" # TODO: Provide secret
