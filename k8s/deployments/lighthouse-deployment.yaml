@@ -26,7 +26,7 @@ spec:
           args:
             - "beacon_node"
             - "--network=mainnet"
-            - "--execution-endpoint=http://geth-deployment:8551"
+            - "--execution-endpoint=http://geth-execution-service:8551"
             - "--execution-jwt=/etc/jwt/jwt.hex"
           resources:
             limits:
@@ -45,8 +45,8 @@ spec:
           volumeMounts:
             - mountPath: "/.lighthouse"
               name: lighthouse-volume
-            - name: jwt-config
-              mountPath: /etc/jwt/
+            - mountPath: /etc/jwt/
+              name: jwt-config
       volumes:
         - name: lighthouse-volume
           persistentVolumeClaim:

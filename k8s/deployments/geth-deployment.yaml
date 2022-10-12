@@ -53,8 +53,8 @@ spec:
           volumeMounts:
             - mountPath: "/.ethereum"
               name: geth-volume
-            - name: jwt-config
-              mountPath: /etc/jwt/
+            - mountPath: /etc/jwt/
+              name: jwt-config
       volumes:
         - name: geth-volume
           persistentVolumeClaim:
