@@ -10,7 +10,7 @@ spec:
     app: crystal-mev
     comp: geth-node-pod
   ports:
-  - name: rpc-endpoint
-    port: 8545
-    protocol: TCP
-    targetPort: 8545
+    - name: rpc-endpoint
+      port: 8545
+      protocol: TCP
+      targetPort: 8545

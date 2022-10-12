@@ -11,7 +11,7 @@ spec:
     comp: geth-node-pod
   loadBalancerIP: 34.170.58.62
   ports:
-  - name: p2p-udp-endpoint
-    port: 30303
-    protocol: UDP
-    targetPort: 30303
+    - name: p2p-udp-endpoint
+      port: 30303
+      protocol: UDP
+      targetPort: 30303

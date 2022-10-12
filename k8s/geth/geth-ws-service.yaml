@@ -10,7 +10,7 @@ spec:
     app: crystal-mev
     comp: geth-node-pod
   ports:
-  - name: ws-endpoint
-    port: 8546
-    protocol: TCP
-    targetPort: 8546
+    - name: ws-endpoint
+      port: 8546
+      protocol: TCP
+      targetPort: 8546
