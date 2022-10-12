@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lighthouse-deployment
+  labels:
+    app: crystal-mev
+spec:
+  selector:
+    matchLabels:
+      app: crystal-mev
+      comp: lighthouse-pod
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: crystal-mev
+        comp: lighthouse-pod
+    spec:
+      containers:
+        - name: lighthouse-pod
+          image: sigp/lighthouse:latest-modern
+          command:
+            - "lighthouse"
+          args:
+            - "beacon_node"
+            - "--network=mainnet"
+            - "--execution-endpoint=http://geth-execution-service:8551"
+            - "--execution-jwt=/etc/jwt/jwtsecret"
+          resources:
+            limits:
+              cpu: 500m
+              memory: 8Gi
+            requests:
+              cpu: 100m
+              memory: 8Gi
+          ports:
+            - containerPort: 9000
+              name: beacon-port-udp
+              protocol: UDP
+            - containerPort: 9000
+              name: beacon-port-tcp
+              protocol: TCP
+          volumeMounts:
+            - mountPath: "/.lighthouse"
+              name: lighthouse-volume
+            - mountPath: /etc/jwt/
+              name: jwt-config
+      volumes:
+        - name: lighthouse-volume
+          persistentVolumeClaim:
+            claimName: lighthouse-volume
+        - name: jwt-config
+          configMap:
+            name: jwt-config
+

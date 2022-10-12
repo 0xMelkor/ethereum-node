@@ -57,41 +57,10 @@ spec:
               name: geth-volume
             - mountPath: /etc/jwt/
               name: jwt-config
-        - name: lighthouse-pod
-          image: sigp/lighthouse:latest-modern
-          command:
-            - "lighthouse"
-          args:
-            - "beacon_node"
-            - "--network=mainnet"
-            - "--execution-endpoint=http://localhost:8551"
-            - "--execution-jwt=/etc/jwt/jwtsecret"
-          resources:
-            limits:
-              cpu: 500m
-              memory: 8Gi
-            requests:
-              cpu: 100m
-              memory: 8Gi
-          ports:
-            - containerPort: 9000
-              name: beacon-port-udp
-              protocol: UDP
-            - containerPort: 9000
-              name: beacon-port-tcp
-              protocol: TCP
-          volumeMounts:
-            - mountPath: "/.lighthouse"
-              name: lighthouse-volume
-            - mountPath: /etc/jwt/
-              name: jwt-config
       volumes:
         - name: geth-volume
           persistentVolumeClaim:
             claimName: geth-volume
-        - name: lighthouse-volume
-          persistentVolumeClaim:
-            claimName: lighthouse-volume
         - name: jwt-config
           configMap:
             name: jwt-config
