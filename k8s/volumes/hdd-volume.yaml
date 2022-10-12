@@ -10,4 +10,4 @@ spec:
       storage: 400Gi # TODO: Upgrade quotas on gcloud
     requests: 
       storage: 50Gi
-  storageClassName: standard-rwo
+  storageClassName: premium-rwo # SSD
