@@ -1,0 +1,7 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jwt-config
+data:
+  jwt.hex: 3bacf3337bb0552423934f2a2bfd8d352b5c0d6dc4c4c1a809a997bf856a309e

@@ -27,7 +27,7 @@ spec:
             - "beacon_node"
             - "--network=mainnet"
             - "--execution-endpoint=http://geth-beacon-service:8551"
-            - "--execution-jwt=/.ethereum/geth/jwtsecret" # TODO: Provide secret
+            - "--execution-jwt=/etc/jwt/jwt.hex"
           resources:
             limits:
               cpu: 500m
@@ -45,8 +45,13 @@ spec:
           volumeMounts:
             - mountPath: "/.lighthouse"
               name: lighthouse-volume
+            - name: jwt-config
+              mountPath: /etc/jwt/
       volumes:
         - name: lighthouse-volume
           persistentVolumeClaim:
             claimName: lighthouse-volume
+        - name: jwt-config
+          configMap:
+            name: jwt-config
 

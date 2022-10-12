@@ -26,7 +26,7 @@ spec:
             - "--authrpc.port=8551"
             - "--authrpc.addr=lighthouse-deployment"
             - "--authrpc.vhosts=lighthouse-deployment"
-            - "--authrpc.jwtsecret=/.ethereum/geth/jwtsecret"
+            - "--authrpc.jwtsecret=/etc/jwt/jwt.hex"
             - "--ws"
             - "--http"
             - "--syncmode=snap" # TODO: turn to "full"
@@ -54,8 +54,13 @@ spec:
           volumeMounts:
             - mountPath: "/.ethereum"
               name: geth-volume
+            - name: jwt-config
+              mountPath: /etc/jwt/
       volumes:
         - name: geth-volume
           persistentVolumeClaim:
             claimName: geth-volume
+        - name: jwt-config
+          configMap:
+            name: jwt-config
 
