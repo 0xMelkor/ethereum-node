@@ -41,6 +41,12 @@ spec:
             - containerPort: 9000
               name: beacon-port-tcp
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9000
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
           volumeMounts:
             - mountPath: "/.lighthouse"
               name: lighthouse-volume

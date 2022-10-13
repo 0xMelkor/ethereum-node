@@ -54,6 +54,12 @@ spec:
             - containerPort: 8551
               name: exec-port-tcp
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8545
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
           volumeMounts:
             - mountPath: "/.ethereum"
               name: geth-volume
