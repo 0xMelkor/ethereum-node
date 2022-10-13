@@ -38,6 +38,13 @@ spec:
             - "--http.corsdomain=*"
             - "--http.vhosts=*"
             - "--syncmode=full"
+          resources:
+            limits:
+              cpu: 4000m
+              memory: 16Gi
+            requests:
+              cpu: 1500m
+              memory: 4Gi
           ports:
             - containerPort: 8545
               name: rpc-port
