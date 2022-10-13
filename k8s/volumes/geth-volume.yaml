@@ -10,4 +10,4 @@ spec:
       storage: 2Ti 
     requests: 
       storage: 50Gi
-  storageClassName: standard-rwo
+  storageClassName: premium-rwo
