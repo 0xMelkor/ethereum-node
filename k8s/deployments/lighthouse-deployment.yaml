@@ -31,8 +31,10 @@ spec:
             - "--execution-jwt=/etc/jwt/jwtsecret"
           resources:
             limits:
+              cpu: 2000m
               memory: 32Gi
             requests:
+              cpu: 1000m
               memory: 8Gi
           ports:
             - containerPort: 9000

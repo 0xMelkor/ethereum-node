@@ -37,9 +37,11 @@ spec:
             - "--syncmode=full"
           resources:
             limits:
+              cpu: 2000m
               memory: 32Gi
             requests:
-              memory: 16Gi
+              cpu: 1000m
+              memory: 8Gi
           ports:
             - containerPort: 8545
               name: rpc-port
