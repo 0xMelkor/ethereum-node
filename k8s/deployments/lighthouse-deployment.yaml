@@ -18,6 +18,8 @@ spec:
         app: crystal-mev
         comp: lighthouse-pod
     spec:
+      nodeSelector:
+        cloud.google.com/compute-class: "Balanced"
       containers:
         - name: lighthouse-pod
           image: sigp/lighthouse:latest-modern

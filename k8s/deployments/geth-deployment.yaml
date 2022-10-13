@@ -18,6 +18,8 @@ spec:
         app: crystal-mev
         comp: geth-node-pod
     spec:
+      nodeSelector:
+        cloud.google.com/compute-class: "Balanced"
       containers:
         - name: geth-node-pod
           image: ethereum/client-go:stable
