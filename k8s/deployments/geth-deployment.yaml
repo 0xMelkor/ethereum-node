@@ -23,12 +23,17 @@ spec:
           image: ethereum/client-go:stable
           args: 
             - "--mainnet"
-            - "--authrpc.addr=localhost"
+            - "--authrpc.addr=0.0.0.0"
             - "--authrpc.port=8551"
             - "--authrpc.vhosts=*"
             - "--authrpc.jwtsecret=/etc/jwt/jwtsecret"
             - "--ws"
+            - "--ws.api=txpool,eth,net,web3,personal"
+            - "--ws.origins=*"
             - "--http"
+            - "--http.api=txpool,eth,net,web3,personal"
+            - "--http.corsdomain=*"
+            - "--http.vhosts=*"
             - "--syncmode=snap" # TODO: turn to "full"
             - "--verbosity=5"
           resources:

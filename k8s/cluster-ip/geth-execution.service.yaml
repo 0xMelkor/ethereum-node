@@ -5,7 +5,7 @@ metadata:
   labels:
     app: crystal-mev
 spec:
-  type: ClusterIP
+  clusterIP: None # We create ah headless service, since geth node is a single pod
   selector:
     app: crystal-mev
     comp: geth-node-pod
