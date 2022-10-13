@@ -23,6 +23,7 @@ spec:
           image: ethereum/client-go:stable
           args: 
             - "--mainnet"
+            - "--datadir=/var/geth"
             - "--authrpc.addr=0.0.0.0"
             - "--authrpc.port=8551"
             - "--authrpc.vhosts=*"
@@ -37,10 +38,10 @@ spec:
             - "--syncmode=full"
           resources:
             limits:
-              cpu: 500m
-              memory: 4Gi
+              cpu: 1000m
+              memory: 16Gi
             requests:
-              cpu: 500m
+              cpu: 1000m
               memory: 4Gi
           ports:
             - containerPort: 8545
@@ -67,7 +68,7 @@ spec:
             initialDelaySeconds: 15
             timeoutSeconds: 5
           volumeMounts:
-            - mountPath: "/.ethereum"
+            - mountPath: "/var/geth/"
               name: geth-volume
             - mountPath: /etc/jwt/
               name: jwt-config
