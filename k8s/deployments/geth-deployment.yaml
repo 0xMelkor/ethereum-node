@@ -34,7 +34,7 @@ spec:
             - "--http.api=txpool,eth,net,web3,personal"
             - "--http.corsdomain=*"
             - "--http.vhosts=*"
-            - "--syncmode=snap" # TODO: turn to "full"
+            - "--syncmode=full"
           resources:
             limits:
               cpu: 500m
