@@ -31,11 +31,11 @@ spec:
             - "--execution-jwt=/etc/jwt/jwtsecret"
           resources:
             limits:
-              cpu: 2000m
-              memory: 32Gi
+              cpu: 500m
+              memory: 4Gi
             requests:
-              cpu: 1000m
-              memory: 8Gi
+              cpu: 500m
+              memory: 4Gi
           ports:
             - containerPort: 9000
               name: beacon-port-udp
