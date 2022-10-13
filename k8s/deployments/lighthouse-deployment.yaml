@@ -42,8 +42,7 @@ spec:
               name: beacon-port-tcp
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /
+            tcpSocket:
               port: 9000
             initialDelaySeconds: 15
             timeoutSeconds: 5
