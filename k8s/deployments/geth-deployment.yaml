@@ -54,9 +54,14 @@ spec:
             - containerPort: 8551
               name: exec-port-tcp
               protocol: TCP
+          startupProbe:
+            tcpSocket:
+              port: 8551
+            failureThreshold: 30 # 5 minutes (30 * 10 = 300s) to finish startup
+            periodSeconds: 10
           livenessProbe:
             tcpSocket:
-              port: 8545
+              port: 8551
             initialDelaySeconds: 15
             timeoutSeconds: 5
           volumeMounts:
