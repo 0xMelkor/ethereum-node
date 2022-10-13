@@ -38,7 +38,7 @@ spec:
             - "--syncmode=full"
           resources:
             limits:
-              cpu: 1500m
+              cpu: 4000m
               memory: 16Gi
             requests:
               cpu: 1500m
