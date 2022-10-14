@@ -5,6 +5,8 @@ metadata:
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: Immediate
 ---
+# This volume refers to a mount directory that merges
+# 3 local SSD drives (3 * 375GB) into one logical volume
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -27,7 +29,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - gke-mev-cluster-default-pool-dd10e5c4-vjzg
+          - gke-crystal-mev-default-pool-8ab09006-tkww
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -51,5 +53,5 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - gke-mev-cluster-default-pool-dd10e5c4-vjzg
+          - gke-crystal-mev-default-pool-8ab09006-tkww
 
