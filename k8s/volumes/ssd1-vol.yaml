@@ -10,7 +10,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: "premium-rwo"
+  storageClassName: "local-storage"
   local:
     path: /mnt/disks/ssd1
   nodeAffinity:
@@ -39,4 +39,4 @@ spec:
   selector:
     matchLabels:
       app: crystal-mev
-  storageClassName: "premium-rwo"
+  storageClassName: "local-storage"

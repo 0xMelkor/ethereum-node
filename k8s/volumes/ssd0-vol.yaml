@@ -8,9 +8,9 @@ spec:
   capacity:
     storage: 1125Gi
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: "premium-rwo"
+  storageClassName: "local-storage"
   local:
     path: /mnt/disks/ssd0
   nodeAffinity:
@@ -39,4 +39,4 @@ spec:
   selector:
     matchLabels:
       app: crystal-mev
-  storageClassName: "premium-rwo"
+  storageClassName: "local-storage"
