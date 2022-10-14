@@ -18,8 +18,6 @@ spec:
         app: crystal-mev
         comp: geth-node-pod
     spec:
-      nodeSelector:
-        cloud.google.com/gke-local-ssd: "true"
       containers:
         - name: geth-node-pod
           image: ethereum/client-go:stable
@@ -70,14 +68,14 @@ spec:
             initialDelaySeconds: 15
             timeoutSeconds: 5
           volumeMounts:
-            - mountPath: "/var/geth/"
-              name: geth-ssd
-            - mountPath: /etc/jwt/
-              name: jwt-config
+            - name: geth-ssd
+              mountPath: /var/geth/           
+            - name: jwt-config
+              mountPath: /etc/jwt/
       volumes:
         - name: geth-ssd
           persistentVolumeClaim:
-            claimName: geth-volume
+            claimName: geth-claim
         - name: jwt-config
           configMap:
               name: jwt-config

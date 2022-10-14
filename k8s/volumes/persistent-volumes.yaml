@@ -1,0 +1,55 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ssd0-local-pv
+  labels:
+    app: crystal-mev
+spec:
+  capacity:
+    storage: 1125Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /mnt/disks/ssd0
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - gke-mev-cluster-default-pool-dd10e5c4-vjzg
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ssd1-local-pv
+  labels:
+    app: crystal-mev
+spec:
+  capacity:
+    storage: 375Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /mnt/disks/ssd1
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - gke-mev-cluster-default-pool-dd10e5c4-vjzg
+

@@ -18,8 +18,6 @@ spec:
         app: crystal-mev
         comp: lighthouse-pod
     spec:
-      nodeSelector:
-        cloud.google.com/gke-local-ssd: "true"
       containers:
         - name: lighthouse-pod
           image: sigp/lighthouse:latest-modern
@@ -56,15 +54,15 @@ spec:
               port: 9000
             initialDelaySeconds: 15
             timeoutSeconds: 5
-          volumeMounts:
-            - mountPath: "/var/lighthouse/"
-              name: lighthouse-ssd
-            - mountPath: /etc/jwt/
-              name: jwt-config
+          volumeMounts:            
+            - name: lighthouse-ssd
+              mountPath: /var/lighthouse/
+            - name: jwt-config
+              mountPath: /etc/jwt/
       volumes:
-        - name: "lighthouse-ssd"
+        - name: lighthouse-ssd
           persistentVolumeClaim:
-            claimName: lighthouse-volume
+            claimName: lighthouse-claim
         - name: jwt-config
           configMap:
               name: jwt-config
