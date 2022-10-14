@@ -71,14 +71,14 @@ spec:
             timeoutSeconds: 5
           volumeMounts:
             - mountPath: "/var/geth/"
-              name: geth-volume
+              name: geth-ssd
             - mountPath: /etc/jwt/
               name: jwt-config
       volumes:
-        - name: geth-volume
-          persistentVolumeClaim:
-            claimName: geth-volume
+        - name: "geth-ssd"
+          hostPath:
+            path: "/mnt/disks/ssd0"
         - name: jwt-config
           configMap:
-            name: jwt-config
+              name: jwt-config
 

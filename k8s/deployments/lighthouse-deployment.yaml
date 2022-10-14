@@ -58,14 +58,14 @@ spec:
             timeoutSeconds: 5
           volumeMounts:
             - mountPath: "/var/lighthouse/"
-              name: lighthouse-volume
+              name: lighthouse-ssd
             - mountPath: /etc/jwt/
               name: jwt-config
       volumes:
-        - name: lighthouse-volume
-          persistentVolumeClaim:
-            claimName: lighthouse-volume
+        - name: "lighthouse-ssd"
+          hostPath:
+            path: "/mnt/disks/ssd1"
         - name: jwt-config
           configMap:
-            name: jwt-config
+              name: jwt-config
 
