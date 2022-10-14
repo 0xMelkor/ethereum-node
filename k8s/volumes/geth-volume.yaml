@@ -1,13 +1,33 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: geth-pv
+  labels:
+    app: crystal-mev
+spec:
+  capacity:
+    storage: 2000Gi
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: geth-disk
+    fsType: ext4
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: geth-volume
+  labels:
+    app: crystal-mev
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     limits:
-      storage: 2Ti 
+      storage: 2000Gi 
     requests: 
-      storage: 2Ti
-  storageClassName: premium-rwo
+      storage: 2000Gi
+  selector:
+    matchLabels:
+      app: crystal-mev
+  storageClassName: pd-standard
