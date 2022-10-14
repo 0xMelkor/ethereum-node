@@ -9,5 +9,5 @@ spec:
     limits:
       storage: 2Ti 
     requests: 
-      storage: 50Gi
+      storage: 2Ti
   storageClassName: premium-rwo
