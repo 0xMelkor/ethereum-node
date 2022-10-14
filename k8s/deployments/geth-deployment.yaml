@@ -19,7 +19,7 @@ spec:
         comp: geth-node-pod
     spec:
       nodeSelector:
-        cloud.google.com/gke-local-ssd: "true"
+        cloud.google.com/compute-class: "Balanced"
       containers:
         - name: geth-node-pod
           image: ethereum/client-go:stable
@@ -75,9 +75,9 @@ spec:
             - mountPath: /etc/jwt/
               name: jwt-config
       volumes:
-        - name: "geth-ssd"
-          hostPath:
-            path: "/mnt/disks/ssd0"
+        - name: geth-ssd
+          persistentVolumeClaim:
+            claimName: geth-volume
         - name: jwt-config
           configMap:
               name: jwt-config

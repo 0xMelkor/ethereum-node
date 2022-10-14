@@ -5,6 +5,13 @@ steps:
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply volumes
+  args: ['apply', '-f', 'k8s/volumes']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
   
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Apply deployments

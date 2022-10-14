@@ -19,7 +19,7 @@ spec:
         comp: lighthouse-pod
     spec:
       nodeSelector:
-        cloud.google.com/gke-local-ssd: "true"
+        cloud.google.com/compute-class: "Balanced"
       containers:
         - name: lighthouse-pod
           image: sigp/lighthouse:latest-modern
@@ -63,8 +63,8 @@ spec:
               name: jwt-config
       volumes:
         - name: "lighthouse-ssd"
-          hostPath:
-            path: "/mnt/disks/ssd1"
+          persistentVolumeClaim:
+            claimName: lighthouse-volume
         - name: jwt-config
           configMap:
               name: jwt-config
