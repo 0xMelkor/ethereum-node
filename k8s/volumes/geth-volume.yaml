@@ -30,4 +30,4 @@ spec:
   selector:
     matchLabels:
       app: crystal-mev
-  storageClassName: pd-standard
+  storageClassName: standard
