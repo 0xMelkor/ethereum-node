@@ -5,11 +5,10 @@ metadata:
   labels:
     app: crystal-mev
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: crystal-mev
     comp: lighthouse-pod
-  loadBalancerIP: 34.123.192.239
   ports:
     - name: beacon-udp-endpoint
       port: 9000
