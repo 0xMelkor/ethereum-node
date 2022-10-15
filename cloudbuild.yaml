@@ -20,13 +20,13 @@ steps:
 #    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
 #    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 #  
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply deployments
-#  args: ['apply', '-f', 'k8s/deployments']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply deployments
+  args: ['apply', '-f', 'k8s/deployments']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
 #- name: 'gcr.io/cloud-builders/kubectl'
 #  id: Apply cluster IPs
 #  args: ['apply', '-f', 'k8s/cluster-ip']
