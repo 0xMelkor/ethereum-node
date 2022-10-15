@@ -36,6 +36,7 @@ spec:
             - "--http.corsdomain=*"
             - "--http.vhosts=*"
             - "--syncmode=full"
+            - "--vmodule=p2p=5"
           resources:
             limits:
               cpu: 4000m
