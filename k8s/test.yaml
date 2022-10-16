@@ -5,8 +5,8 @@ metadata:
 spec:
   loadBalancerIP: 34.123.192.239
   ports:
-  - port: 80
-    targetPort: 8080
+  - port: 30303
+    targetPort: 30303
     name: http 
   selector:
     app: foo
@@ -31,11 +31,11 @@ spec:
         image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.11
         ports:
           - name: http
-            containerPort: 8080
+            containerPort: 30303
         readinessProbe:
           httpGet:
             path: /healthz
-            port: 8080
+            port: 30303
             scheme: HTTP
           initialDelaySeconds: 5
           timeoutSeconds: 1
