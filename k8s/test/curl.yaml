@@ -15,5 +15,7 @@ spec:
       containers:
       - name: curl
         image: curlimages/curl
+        command:
+          - "curl"
         args:
           - "https://api.ipify.org?format=json"
