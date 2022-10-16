@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo
+spec:
+  loadBalancerIP: 34.123.192.239
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: http 
+  selector:
+    app: foo
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: foo
+  template:
+    metadata:
+      labels:
+        app: foo
+    spec:
+      containers:
+      - name: whereami
+        image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.11
+        ports:
+          - name: http
+            containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+          timeoutSeconds: 1

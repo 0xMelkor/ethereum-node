@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: lighthouse-beacon-tcp-np
+  name: lighthouse-beacon-tcp-lp
   labels:
     app: crystal-mev
 spec:
