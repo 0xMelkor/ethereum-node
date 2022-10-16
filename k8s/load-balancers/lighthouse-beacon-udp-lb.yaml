@@ -8,10 +8,9 @@ spec:
   type: LoadBalancer
   selector:
     app: crystal-mev
-    comp: lighthouse-beacon-udp-np
-  loadBalancerIP: 34.123.192.239
+    comp: lighthouse-pod
   ports:
     - name: beacon-udp-lb
       port: 9000
       protocol: UDP
-      targetPort: beacon-udp-np
+      targetPort: beacon-port-udp

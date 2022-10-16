@@ -8,10 +8,9 @@ spec:
   type: LoadBalancer
   selector:
     app: crystal-mev
-    comp: geth-p2p-udp-np
-  loadBalancerIP: 34.123.192.239
+    comp: geth-node-pod
   ports:
     - name: p2p-udp-lb
       port: 30303
       protocol: UDP
-      targetPort: p2p-udp-np
+      targetPort: p2p-port-udp
