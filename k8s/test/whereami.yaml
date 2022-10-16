@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: foo
 spec:
+  loadBalancerIP: 34.69.247.252
   ports:
   - port: 30303
     targetPort: 8080
