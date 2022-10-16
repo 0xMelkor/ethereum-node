@@ -4,6 +4,7 @@ metadata:
   name: lighthouse-beacon-udp-np
   labels:
     app: crystal-mev
+    comp: lighthouse-beacon-udp-np
 spec:
   type: NodePort
   selector:

@@ -4,6 +4,7 @@ metadata:
   name: geth-p2p-udp-np
   labels:
     app: crystal-mev
+    comp: geth-p2p-udp-np
 spec:
   type: NodePort
   selector:

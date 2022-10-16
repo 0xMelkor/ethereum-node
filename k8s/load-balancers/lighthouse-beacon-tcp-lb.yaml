@@ -8,6 +8,7 @@ spec:
   type: LoadBalancer
   selector:
     app: crystal-mev
+    comp: lighthouse-beacon-tcp-np
   loadBalancerIP: 34.123.192.239
   ports:
     - name: beacon-tcp-lb
