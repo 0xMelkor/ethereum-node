@@ -4,7 +4,7 @@ metadata:
   name: foo
 spec:
   ports:
-  - port: 30303
+  - port: 30304
     targetPort: 8080
     name: http 
   selector:
