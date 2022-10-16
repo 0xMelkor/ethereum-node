@@ -5,7 +5,7 @@ metadata:
 spec:
   ports:
   - port: 30303
-    targetPort: 30303
+    targetPort: 8080
     name: http 
   selector:
     app: foo
@@ -30,11 +30,11 @@ spec:
         image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.11
         ports:
           - name: http
-            containerPort: 30303
+            containerPort: 8080
         readinessProbe:
           httpGet:
             path: /healthz
-            port: 30303
+            port: 8080
             scheme: HTTP
           initialDelaySeconds: 5
           timeoutSeconds: 1
