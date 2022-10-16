@@ -27,6 +27,8 @@ spec:
         app: foo
     spec:
       containers:
+      - name: curl
+        image: curlimages/curl
       - name: whereami
         image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.11
         ports:
