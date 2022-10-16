@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: geth-p2p-udp-lb
+  labels:
+    app: crystal-mev
+spec:
+  type: LoadBalancer
+  selector:
+    app: crystal-mev
+  loadBalancerIP: 34.123.192.239
+  ports:
+    - name: p2p-udp-lb
+      port: 30303
+      protocol: UDP
+      targetPort: p2p-udp-np

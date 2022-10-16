@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: geth-p2p-udp-service
+  name: geth-p2p-tcp-np
   labels:
     app: crystal-mev
 spec:
@@ -10,7 +10,7 @@ spec:
     app: crystal-mev
     comp: geth-node-pod
   ports:
-    - name: p2p-udp-endpoint
+    - name: p2p-tcp-np
       port: 30303
-      protocol: UDP
-      targetPort: 30303
+      protocol: TCP
+      targetPort: p2p-port-tcp

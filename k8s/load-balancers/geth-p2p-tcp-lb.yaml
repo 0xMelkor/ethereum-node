@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: geth-p2p-tcp-service
+  name: geth-p2p-tcp-lb
   labels:
     app: crystal-mev
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: crystal-mev
-    comp: geth-node-pod
+  loadBalancerIP: 34.123.192.239
   ports:
-    - name: p2p-tcp-endpoint
+    - name: p2p-tcp-lb
       port: 30303
       protocol: TCP
-      targetPort: 30303
+      targetPort: p2p-tcp-np
