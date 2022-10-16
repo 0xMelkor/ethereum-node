@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: geth-p2p-tcp-lb
+  name: eth-node-l1-lb
   labels:
     app: crystal-mev
     comp: geth-p2p-tcp-lb
@@ -9,9 +9,9 @@ spec:
   type: LoadBalancer
   selector:
     app: crystal-mev
-    comp: geth-node-pod
+  loadBalancerIP: 34.123.192.239
   ports:
-    - name: p2p-tcp-lb
+    - name: p2p-tcp-l1-lb
       port: 30303
       protocol: TCP
-      targetPort: p2p-port-tcp
+      targetPort: p2p-tcp-lb
