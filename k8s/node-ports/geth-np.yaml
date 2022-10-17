@@ -7,9 +7,9 @@
 #  ports:
 #  - name: geth-p2p-tcp-np 
 #    protocol: TCP
-#    port: 30303
-#    targetPort: 30303
-#    nodePort: 30303
+#    port: 30603
+#    targetPort: 30603
+#    nodePort: 30603
 #  selector:
 #    app: crystal-mev
 #    comp: geth-node-pod
@@ -23,9 +23,9 @@ spec:
   ports:
   - name: geth-p2p-udp-np 
     protocol: UDP
-    port: 30303
-    targetPort: 30303
-    nodePort: 30303
+    port: 30603
+    targetPort: 30603
+    nodePort: 30603
   selector:
     app: crystal-mev
     comp: geth-node-pod

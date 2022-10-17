@@ -23,6 +23,7 @@ spec:
           image: ethereum/client-go:stable
           args: 
             - "--mainnet"
+            - "--port=30603"
             - "--datadir=/var/geth"
             - "--authrpc.addr=0.0.0.0"
             - "--authrpc.port=8551"
@@ -49,10 +50,10 @@ spec:
               name: rpc-port
             - containerPort: 8546
               name: ws-port
-            - containerPort: 30303
+            - containerPort: 30603
               name: p2p-port-udp
               protocol: UDP
-            - containerPort: 30303
+            - containerPort: 30603
               name: p2p-port-tcp
               protocol: TCP
             - containerPort: 8551
