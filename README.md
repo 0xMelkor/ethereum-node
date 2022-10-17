@@ -60,14 +60,18 @@ sudo mdadm --create /dev/md0 --level=0 --raid-devices=5 /dev/sdb /dev/sdc /dev/s
 sudo mkfs.ext4 -F /dev/md0
 
 # Mount all
+
+# Merged disk for geth
 sudo mkdir -p /mnt/disks/ssd0
 sudo mount /dev/md0 /mnt/disks/ssd0
 sudo chmod a+w /mnt/disks/ssd0
 
+# Reserved to lighthouse
 sudo mkdir -p /mnt/disks/ssd1
 sudo mount /dev/sdg /mnt/disks/ssd1
 sudo chmod a+w /mnt/disks/ssd1
 
+# For other applications and bots
 sudo mkdir -p /mnt/disks/ssd2
 sudo mount /dev/sdh /mnt/disks/ssd2
 sudo chmod a+w /mnt/disks/ssd2

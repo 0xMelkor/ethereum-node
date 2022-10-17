@@ -15,7 +15,7 @@ metadata:
     app: crystal-mev
 spec:
   capacity:
-    storage: 1125Gi
+    storage: 1875Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain

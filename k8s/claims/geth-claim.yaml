@@ -10,6 +10,6 @@ spec:
   storageClassName: local-drive
   resources:
     limits:
-      storage: 1125Gi 
+      storage: 1875Gi 
     requests: 
-      storage: 1125Gi 
+      storage: 1875Gi 
