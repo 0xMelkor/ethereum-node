@@ -26,6 +26,7 @@ spec:
           args:
             - "beacon_node"
             - "--port=30403" # Override default port 9000 to expose p2p protocol in the NodePort interval 30000-32767
+            - "--discovery-port=30503"
             - "--datadir=/var/lighthouse"
             - "--checkpoint-sync-url=https://sync.invis.tools"
             - "--network=mainnet"
@@ -39,7 +40,7 @@ spec:
               cpu: 1500m
               memory: 4Gi
           ports:
-            - containerPort: 30403
+            - containerPort: 30503
               name: beacon-port-udp
               protocol: UDP
             - containerPort: 30403
