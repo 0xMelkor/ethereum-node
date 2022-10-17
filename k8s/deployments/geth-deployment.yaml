@@ -23,7 +23,7 @@ spec:
           image: ethereum/client-go:stable
           args: 
             - "--mainnet"
-            - "--port=30603"
+            - "--discovery.port=30304" # Custom UDP discovery port
             - "--datadir=/var/geth"
             - "--authrpc.addr=0.0.0.0"
             - "--authrpc.port=8551"
@@ -50,25 +50,25 @@ spec:
               name: rpc-port
             - containerPort: 8546
               name: ws-port
-            - containerPort: 30603
+            - containerPort: 30304
               name: p2p-port-udp
               protocol: UDP
-            - containerPort: 30603
+            - containerPort: 30303
               name: p2p-port-tcp
               protocol: TCP
             - containerPort: 8551
               name: exec-port-tcp
               protocol: TCP
-          #startupProbe:
-          #  tcpSocket:
-          #    port: 8551
-          #  failureThreshold: 30 # 5 minutes (30 * 10 = 300s) to finish startup
-          #  periodSeconds: 10
-          #livenessProbe:
-          #  tcpSocket:
-          #    port: 8551
-          #  initialDelaySeconds: 15
-          #  timeoutSeconds: 5
+          startupProbe:
+            tcpSocket:
+              port: 8551
+            failureThreshold: 30 # 5 minutes (30 * 10 = 300s) to finish startup
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8551
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
           volumeMounts:
             - name: geth-ssd
               mountPath: /var/geth/           

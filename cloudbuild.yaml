@@ -33,14 +33,8 @@ steps:
   args: ['apply', '-f', 'k8s/node-ports']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'#
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply test
-#  args: ['apply', '-f', 'k8s/test']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 timeout: 3600s
 options:
   logging: CLOUD_LOGGING_ONLY
