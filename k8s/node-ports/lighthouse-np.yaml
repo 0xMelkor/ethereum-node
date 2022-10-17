@@ -23,9 +23,9 @@ spec:
   ports:
   - name: lighthouse-p2p-udp-np 
     protocol: UDP
-    port: 30503
-    targetPort: 30503
-    nodePort: 30503
+    port: 30404
+    targetPort: 30404
+    nodePort: 30404
   selector:
     app: crystal-mev
     comp: lighthouse-pod
