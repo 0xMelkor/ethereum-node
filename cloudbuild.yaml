@@ -1,53 +1,46 @@
 steps:
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply config
-#  args: ['apply', '-f', 'k8s/config']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply volumes
-#  args: ['apply', '-f', 'k8s/volumes']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply claims
-#  args: ['apply', '-f', 'k8s/claims']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#  
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply deployments
-#  args: ['apply', '-f', 'k8s/deployments']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply cluster IPs
-#  args: ['apply', '-f', 'k8s/cluster-ip']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply load balancers
-#  args: ['apply', '-f', 'k8s/load-balancers']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
 
 - name: 'gcr.io/cloud-builders/kubectl'
-  id: Apply test
-  args: ['apply', '-f', 'k8s/test']
+  id: Apply volumes
+  args: ['apply', '-f', 'k8s/volumes']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply claims
+  args: ['apply', '-f', 'k8s/claims']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+ 
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply deployments
+  args: ['apply', '-f', 'k8s/deployments']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply cluster IPs
+  args: ['apply', '-f', 'k8s/cluster-ip']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply node ports
+  args: ['apply', '-f', 'k8s/node-ports']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'#
+
+#- name: 'gcr.io/cloud-builders/kubectl'
+#  id: Apply test
+#  args: ['apply', '-f', 'k8s/test']
+#  env:
+#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 timeout: 3600s
 options:
   logging: CLOUD_LOGGING_ONLY

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lighthouse-np-tcp
+spec:
+  type: NodePort
+  ports:
+  - name: lighthouse-p2p-tcp-np 
+    protocol: TCP
+    port: 30403
+    targetPort: 30403
+    nodePort: 30403
+  selector:
+    app: crystal-mev
+    comp: lighthouse-pod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lighthouse-np-udp
+spec:
+  type: NodePort
+  ports:
+  - name: lighthouse-p2p-udp-np 
+    protocol: UDP
+    port: 30403
+    targetPort: 30403
+    nodePort: 30403
+  selector:
+    app: crystal-mev
+    comp: lighthouse-pod
