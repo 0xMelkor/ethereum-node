@@ -46,16 +46,16 @@ spec:
             - containerPort: 30403
               name: beacon-port-tcp
               protocol: TCP
-          startupProbe:
-            tcpSocket:
-              port: 30403
-            failureThreshold: 30 # 5 minutes (30 * 10 = 300s) to finish startup
-            periodSeconds: 10
-          livenessProbe:
-            tcpSocket:
-              port: 30403
-            initialDelaySeconds: 15
-            timeoutSeconds: 5
+          #startupProbe:
+          #  tcpSocket:
+          #    port: 30403
+          #  failureThreshold: 30 # 5 minutes (30 * 10 = 300s) to finish startup
+          #  periodSeconds: 10
+          #livenessProbe:
+          #  tcpSocket:
+          #    port: 30403
+          #  initialDelaySeconds: 15
+          #  timeoutSeconds: 5
           volumeMounts:            
             - name: lighthouse-ssd
               mountPath: /var/lighthouse/
