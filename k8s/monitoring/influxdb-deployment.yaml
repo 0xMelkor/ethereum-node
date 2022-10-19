@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: influxdb
+  labels:
+    app: crystal-mev
+spec:
+  selector:
+    matchLabels:
+      app: crystal-mev
+      comp: influxdb
+  serviceName: influxdb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: crystal-mev
+        comp: influxdb
+    spec:
+      containers:
+        - name: influxdb-pod
+          image: influxdb:2.0.6
+          volumeMounts:
+            - name: influxdb-secret
+              mountPath: "/etc/influx"
+              readOnly: true
+          env:
+            # The username to set for the system's initial super-user
+            - name: DOCKER_INFLUXDB_INIT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: influxUsername
+            # The password to set for the system's inital super-user
+            - name: DOCKER_INFLUXDB_INIT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: influxPassword
+            # The name to set for the system's initial organization
+            - name: DOCKER_INFLUXDB_INIT_ORG
+              valueFrom:
+                secretKeyRef:
+                  key: influxOrganization
+            # The name to set for the system's initial bucket
+            - name: DOCKER_INFLUXDB_INIT_BUCKET
+              valueFrom:
+                secretKeyRef:
+                  key: influxBucket
+            # The duration the system's initial bucket should retain data
+            - name: DOCKER_INFLUXDB_INIT_RETENTION
+              valueFrom:
+                secretKeyRef:
+                  key: influxRetention
+          ports:
+            - containerPort: 8086
+              name: influxdb-port
+      volumes:
+        - name: influxdb-secret
+          secret:
+            secretName: influxdb-secret

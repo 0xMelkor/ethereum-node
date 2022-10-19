@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: influxdb-service
+    labels:
+      app: crystal-mev
+spec:
+  clusterIP: None # We create ah headless service, since influxdb is a single pod
+  selector:
+      app: influxdb
+      comp: influxdb-pod
+  ports:
+    - port: 8086
+      protocol: TCP
+      targetPort: 8086

@@ -1,0 +1,19 @@
+# https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
+
+apiVersion: networking.k8s.io/v1 # TODO capire se va bene in gcloud
+kind: Ingress
+metadata:
+  name: influxdb-ingress
+spec:
+  ingressClassName: influxdb-ingress
+  rules:
+  - host: www.crystalmev.xyz
+    http:
+      paths:
+      - path: /influxdb
+        pathType: Prefix
+        backend:
+          service:
+            name: influxdb-service
+            port:
+              number: 8086
