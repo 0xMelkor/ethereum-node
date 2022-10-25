@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: crystal-mev
+spec:
+  selector:
+    matchLabels:
+      app: crystal-mev
+      comp: nginx-pod
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: crystal-mev
+        comp: nginx-pod
+    spec:
+      containers:
+        - name: crystal-mev-nginx
+          image: crystal-mev-nginx
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+          ports:
+            - containerPort: 80
+              name: nginx-port
+      restartPolicy: Always
