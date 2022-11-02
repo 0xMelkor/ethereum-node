@@ -4,7 +4,6 @@ metadata:
   name: reverse-proxy-ingress
   annotations:
     # The gce class deploys an external HTTP(S) load balancer.
-    kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.global-static-ip-name: crystal-mev-proxy-ip
 spec:
   rules:
