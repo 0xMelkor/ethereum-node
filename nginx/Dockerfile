@@ -13,4 +13,4 @@ RUN mkdir /etc/apache2
 RUN touch /etc/apache2/.htpasswd
 RUN htpasswd -b /etc/apache2/.htpasswd $RPC_USERNAME $RPC_PASSWORD
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
