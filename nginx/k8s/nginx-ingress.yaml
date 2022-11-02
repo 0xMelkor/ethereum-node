@@ -3,16 +3,10 @@ kind: Ingress
 metadata:
   name: reverse-proxy-ingress
   annotations:
-    # The gce class deploys an external HTTP(S) load balancer.
-    kubernetes.io/ingress.global-static-ip-name: crystal-mev-proxy-ip
+    kubernetes.io/ingress.global-static-ip-name: "crystal-mev-proxy-ip"
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /*
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: nginx-tcp-np
-            port:
-              number: 80
+  defaultBackend:
+    service:
+      name: nginx-tcp-np
+      port:
+        number: 80
