@@ -4,7 +4,7 @@ metadata:
   name: reverse-proxy-ingress
   annotations:
     kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.regional-static-ip-name:  "crystal-mev-proxy-ip"
+    kubernetes.io/ingress.global-static-ip-name: "crystal-mev-proxy-ip"
 spec:
   defaultBackend:
     service:
