@@ -10,4 +10,4 @@ spec:
     service:
       name: nginx-tcp-np
       port:
-        number: 30666
+        number: 80
