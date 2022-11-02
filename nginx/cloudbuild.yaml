@@ -20,7 +20,7 @@ steps:
 
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Apply definitions
-  args: ['apply', '-f', 'k8s']
+  args: ['apply', '-f', './nginx/k8s']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}' 
