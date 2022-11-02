@@ -7,9 +7,9 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: local-drive
+  storageClassName: premium-rwo
   resources:
     limits:
-      storage: 1875Gi 
+      storage: 2000Gi 
     requests: 
-      storage: 1875Gi 
+      storage: 2000Gi 
