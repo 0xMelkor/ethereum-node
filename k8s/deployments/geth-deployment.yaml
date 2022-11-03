@@ -72,13 +72,14 @@ spec:
           volumeMounts:
             - name: geth-ssd
               mountPath: /var/geth/           
-            - name: jwt-config
+            - name: jwt-secret
               mountPath: /etc/jwt/
+              readOnly: true
       volumes:
         - name: geth-ssd
           persistentVolumeClaim:
             claimName: geth-claim
-        - name: jwt-config
-          configMap:
-              name: jwt-config
+        - name: jwt-secret
+          secret:
+            secretName: jwt-secret
 
