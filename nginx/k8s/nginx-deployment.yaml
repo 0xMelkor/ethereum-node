@@ -21,6 +21,12 @@ spec:
       containers:
         - name: crystal-mev-nginx
           image: crystal-mev-nginx
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
           livenessProbe:
             httpGet:
               path: /healthz
