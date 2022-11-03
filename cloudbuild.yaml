@@ -5,9 +5,9 @@ steps:
   entrypoint: bash
   args: [
     '-c',
-    'envsubst "${$$GETH_JWT}"" < k8s/jwt-secret.yaml | kubectl apply -f -'
+    'envsubst "${$$GETH_AUTH_JWT}"" < k8s/jwt-secret.yaml | kubectl apply -f -'
   ]
-  secretEnv: ['GETH_JWT']
+  secretEnv: ['GETH_AUTH_JWT']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
@@ -42,8 +42,8 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/$PROJECT_ID/secrets/GETH_AUTH_JWT/versions/1
-    env: 'GETH_JWT'
+    - versionName: projects/$PROJECT_ID/secrets/GETH_AUTH_JWT/versions/1
+      env: 'GETH_AUTH_JWT'
 
 options:
   logging: CLOUD_LOGGING_ONLY
