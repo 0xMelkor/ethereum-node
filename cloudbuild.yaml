@@ -42,7 +42,7 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/$PROJECT_NUMBER/secrets/GETH_JWT/versions/1
+  - versionName: projects/843423425535/secrets/GETH_JWT/versions/1
     env: 'GETH_JWT'
 
 options:
