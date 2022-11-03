@@ -5,9 +5,10 @@ steps:
   entrypoint: bash
   args: [
     '-c',
-    'envsubst "${$_GETH_AUTH_JWT}" < k8s/jwt-secret.yaml | kubectl apply -f -'
+    'envsubst "${GETH_AUTH_JWT}" < k8s/jwt-secret.yaml | kubectl apply -f -'
   ]
   env:
+    - 'GETH_AUTH_JWT=${_GETH_AUTH_JWT}'
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
