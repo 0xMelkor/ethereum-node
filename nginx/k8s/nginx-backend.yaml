@@ -1,0 +1,10 @@
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: nginx-backendconfig
+  namespace: default
+spec:
+  healthCheck:
+    requestPath: /healthz
+    port: 80
+    type: HTTP

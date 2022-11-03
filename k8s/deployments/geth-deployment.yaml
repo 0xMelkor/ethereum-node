@@ -30,9 +30,11 @@ spec:
             - "--authrpc.vhosts=*"
             - "--authrpc.jwtsecret=/etc/jwt/jwtsecret"
             - "--ws"
+            - "--ws.addr=0.0.0.0"
             - "--ws.api=txpool,eth,net,web3,personal"
             - "--ws.origins=*"
             - "--http"
+            - "--http.addr=0.0.0.0"
             - "--http.api=txpool,eth,net,web3,personal"
             - "--http.corsdomain=*"
             - "--http.vhosts=*"
@@ -50,15 +52,13 @@ spec:
               name: rpc-port
             - containerPort: 8546
               name: ws-port
+            - containerPort: 8551
+              name: exec-port-tcp
+            - containerPort: 30303
+              name: p2p-port-tcp
             - containerPort: 30304
               name: p2p-port-udp
               protocol: UDP
-            - containerPort: 30303
-              name: p2p-port-tcp
-              protocol: TCP
-            - containerPort: 8551
-              name: exec-port-tcp
-              protocol: TCP
           startupProbe:
             tcpSocket:
               port: 8551
