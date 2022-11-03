@@ -4,6 +4,8 @@ WORKDIR /usr/app
 ARG CRYSTAL_MEV_API_KEY
 RUN test -n "$CRYSTAL_MEV_API_KEY"
 
+RUN echo $(pwd)
+RUN echo $(ls -al)
 RUN _CRYSTAL_MEV_API_KEY=$CRYSTAL_MEV_API_KEY  envsubst < ./nginx/nginx.conf > ./nginx/nginx_main.conf
 RUN cat ./nginx/nginx_main.conf 
 
