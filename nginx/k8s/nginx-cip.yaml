@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-tcp-cip
+  annotations:
+    cloud.google.com/backend-config: '{"default": "nginx-backendconfig"}'
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  type: ClusterIP
+  selector:
+    app: crystal-mev
+    comp: nginx-pod
+  ports:
+  - port: 80
+    targetPort: 80

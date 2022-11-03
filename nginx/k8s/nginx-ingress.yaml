@@ -1,13 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: reverse-proxy-ingress
+  name: nginx-ingress
   annotations:
     kubernetes.io/ingress.class: "gce"
     kubernetes.io/ingress.global-static-ip-name: "crystal-mev-proxy-ip"
 spec:
-  defaultBackend:
-    service:
-      name: nginx-tcp-np
-      port:
-        number: 80
+  rules:
+  - http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: nginx-tcp-cip
+            port:
+              number: 80
