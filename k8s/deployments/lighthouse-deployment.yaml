@@ -59,13 +59,13 @@ spec:
           volumeMounts:            
             - name: lighthouse-ssd
               mountPath: /var/lighthouse/
-            - name: jwt-config
+            - name: jwt-secret
               mountPath: /etc/jwt/
+              readOnly: true
       volumes:
         - name: lighthouse-ssd
           persistentVolumeClaim:
             claimName: lighthouse-claim
-        - name: jwt-config
-          configMap:
-              name: jwt-config
-
+        - name: jwt-secret
+          secret:
+            secretName: jwt-secret

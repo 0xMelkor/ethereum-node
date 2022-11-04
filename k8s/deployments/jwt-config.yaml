@@ -1,7 +1,0 @@
-
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: jwt-config
-data:
-  jwtsecret: "a6347bd5ac4e2c5191fdc25892b831b9438ebaf90db4f8e706638db596261f93"
