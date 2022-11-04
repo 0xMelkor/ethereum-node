@@ -44,7 +44,7 @@ spec:
             - "--metrics.influxdb.database=geth"
             - "--metrics.influxdb.token=$(INFLUX_DB_TOKEN)"
             - "--metrics.influxdb.bucket=geth-bucket"
-            - "--metrics.influxdb.organization='Crystal MEV'"
+            - "--metrics.influxdb.organization=Crystal MEV"
             - "--syncmode=full"
           env:
             - name: INFLUX_DB_TOKEN
