@@ -5,14 +5,14 @@ steps:
   entrypoint: 'bash'
   args: [
       '-c',
-    'envsubst "$${GETH_AUTH_JWT}" < k8s/config/jwt-secret.yaml > tmp/config/jwt-secret.yaml'
+    'envsubst "$${GETH_AUTH_JWT}" < k8s/config/jwt-secret.yaml > jwt-secret.yaml'
     ]
   env:
     - 'GETH_AUTH_JWT=${_GETH_AUTH_JWT}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Apply JWT secret
-  args: ['apply', '-f', 'tmp/config/jwt-secret.yaml']
+  args: ['apply', '-f', 'jwt-secret.yaml']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
