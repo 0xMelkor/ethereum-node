@@ -47,7 +47,7 @@ spec:
             - "--metrics.influxdb.organization=Crystal MEV"
             - "--syncmode=full"
           env:
-            - name: INFLUX_DB_USERNAME
+            - name: INFLUX_DB_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: influxdb-secret
