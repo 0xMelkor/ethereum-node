@@ -2,9 +2,8 @@ steps:
 
 - name: 'bash'
   id: JWT substitution
-  entrypoint: '/bin/bash'
   args: [
-      '-c',
+    '-c',
     'envsubst "$${GETH_AUTH_JWT}" < k8s/config/jwt-secret.yaml > jwt-secret.yaml'
     ]
   env:
