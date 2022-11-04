@@ -1,8 +1,8 @@
 steps:
 
-- name: 'busybox'
+- name: 'bash'
   id: JWT substitution
-  entrypoint: '/bin/sh'
+  entrypoint: '/bin/bash'
   args: [
       '-c',
     'envsubst "$${GETH_AUTH_JWT}" < k8s/config/jwt-secret.yaml > jwt-secret.yaml'
