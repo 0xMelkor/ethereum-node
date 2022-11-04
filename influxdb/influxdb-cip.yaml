@@ -7,7 +7,7 @@ metadata:
 spec:
   clusterIP: None # We create ah headless service, since influxdb is a single pod
   selector:
-      app: influxdb
+      app: crystal-mev
       comp: influxdb-pod
   ports:
     - port: 8086

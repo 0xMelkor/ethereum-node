@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: influxdb
+  name: influxdb-deployment
   labels:
     app: crystal-mev
 spec:
   selector:
     matchLabels:
       app: crystal-mev
-      comp: influxdb
+      comp: influxdb-pod
   serviceName: influxdb
   replicas: 1
   template:
     metadata:
       labels:
         app: crystal-mev
-        comp: influxdb
+        comp: influxdb-pod
     spec:
       containers:
         - name: influxdb-pod
