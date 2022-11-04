@@ -15,7 +15,7 @@ steps:
   entrypoint: /bin/sh
   args: [
     '-c',
-    'envsubst < geth/config/influxdb-secret.yaml > influxdb-secret.yaml'
+    'envsubst < geth/config/influxdb-secret.yaml > influxdb-secret.yaml; echo $$(cat influxdb-secret.yaml)'
     ]
   env:
     - 'INFLUX_DB_TOKEN=${_INFLUX_DB_TOKEN}'
