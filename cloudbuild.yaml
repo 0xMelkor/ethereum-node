@@ -1,15 +1,23 @@
 steps:
 
 - name: 'bhgedigital/envsubst'
-  id: Secrets substitution
+  id: Secrets substitution - Lighthouse JWT 
   entrypoint: /bin/sh
   args: [
     '-c',
     'envsubst < geth/config/jwt-secret.yaml > jwt-secret.yaml',
-    'envsubst < geth/config/influxdb-secret.yaml > influxdb-secret.yaml'
     ]
   env:
     - 'GETH_AUTH_JWT=${_GETH_AUTH_JWT}'
+
+- name: 'bhgedigital/envsubst'
+  id: Secrets substitution - InfluxDB token 
+  entrypoint: /bin/sh
+  args: [
+    '-c',
+    'envsubst < geth/config/influxdb-secret.yaml > influxdb-secret.yaml'
+    ]
+  env:
     - 'INFLUX_DB_TOKEN=${_INFLUX_DB_TOKEN}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
