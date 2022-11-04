@@ -42,7 +42,7 @@ spec:
             - "--metrics.influxdbv2"
             - "--metrics.influxdb.endpoint=http://influxdb-service:8086"
             - "--metrics.influxdb.database=geth"
-            - "--metrics.influxdb.token=${INFLUX_DB_TOKEN}"
+            - "--metrics.influxdb.token=$(INFLUX_DB_TOKEN)"
             - "--metrics.influxdb.bucket=geth-bucket"
             - "--metrics.influxdb.organization=Crystal MEV"
             - "--syncmode=full"
