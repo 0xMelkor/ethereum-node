@@ -1,49 +1,56 @@
 steps:
 
-- name: 'bhgedigital/envsubst'
-  id: JWT substitution
-  entrypoint: /bin/sh
-  args: [
-    '-c',
-    'envsubst < k8s/config/jwt-secret.yaml > jwt-secret.yaml'
-    ]
-  env:
-    - 'GETH_AUTH_JWT=${_GETH_AUTH_JWT}'
-
 - name: 'gcr.io/cloud-builders/kubectl'
-  id: Apply JWT secret
-  args: ['apply', '-f', 'jwt-secret.yaml']
+  id: Apply influxdb
+  args: ['apply', '-f', 'influxdb.yaml']
   env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Apply claims
-  args: ['apply', '-f', 'k8s/claims']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
- 
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Apply deployments
-  args: ['apply', '-f', 'k8s/deployments']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Apply cluster IPs
-  args: ['apply', '-f', 'k8s/cluster-ip']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Apply node ports
-  args: ['apply', '-f', 'k8s/node-ports']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+#- name: 'bhgedigital/envsubst'
+#  id: JWT substitution
+#  entrypoint: /bin/sh
+#  args: [
+#    '-c',
+#    'envsubst < geth/config/jwt-secret.yaml > jwt-secret.yaml'
+#    ]
+#  env:
+#    - 'GETH_AUTH_JWT=${_GETH_AUTH_JWT}'
+#
+#- name: 'gcr.io/cloud-builders/kubectl'
+#  id: Apply JWT secret
+#  args: ['apply', '-f', 'jwt-secret.yaml']
+#  env:
+#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+#
+#- name: 'gcr.io/cloud-builders/kubectl'
+#  id: Apply claims
+#  args: ['apply', '-f', 'geth/claims']
+#  env:
+#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+# 
+#- name: 'gcr.io/cloud-builders/kubectl'
+#  id: Apply deployments
+#  args: ['apply', '-f', 'geth/deployments']
+#  env:
+#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+#
+#- name: 'gcr.io/cloud-builders/kubectl'
+#  id: Apply cluster IPs
+#  args: ['apply', '-f', 'geth/cluster-ip']
+#  env:
+#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+#
+#- name: 'gcr.io/cloud-builders/kubectl'
+#  id: Apply node ports
+#  args: ['apply', '-f', 'geth/node-ports']
+#  env:
+#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 options:
   logging: CLOUD_LOGGING_ONLY

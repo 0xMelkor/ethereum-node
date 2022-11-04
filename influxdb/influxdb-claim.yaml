@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influxdb-claim
+  labels:
+    app: crystal-mev
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard-rwo
+  resources:
+    limits:
+      storage: 10Gi 
+    requests: 
+      storage: 1Gi 
