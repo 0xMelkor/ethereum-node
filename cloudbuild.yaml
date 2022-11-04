@@ -1,6 +1,6 @@
 steps:
 
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: 'busybox'
   id: JWT substitution
   entrypoint: 'bash'
   args: [
