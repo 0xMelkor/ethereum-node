@@ -49,7 +49,7 @@ spec:
           env:
             - name: INFLUX_DB_TOKEN
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: influxdb-secret
                   key: influxdb-token
                   optional: false
