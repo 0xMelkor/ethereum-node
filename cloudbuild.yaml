@@ -2,10 +2,10 @@ steps:
 
 - name: 'bhgedigital/envsubst'
   id: JWT substitution
-  entrypoint: sh
+  entrypoint: /bin/sh
   args: [
     '-c',
-    '"$${GETH_AUTH_JWT}" < k8s/config/jwt-secret.yaml > jwt-secret.yaml'
+    'envsubst "$${GETH_AUTH_JWT}" < k8s/config/jwt-secret.yaml > jwt-secret.yaml'
     ]
   env:
     - 'GETH_AUTH_JWT=${_GETH_AUTH_JWT}'
