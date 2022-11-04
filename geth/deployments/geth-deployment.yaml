@@ -38,6 +38,7 @@ spec:
             - "--http.api=txpool,eth,net,web3,personal"
             - "--http.corsdomain=*"
             - "--http.vhosts=*"
+            - "--metrics"
             - "--metrics.influxdbv2"
             - "--metrics.influxdb.endpoint=http://influxdb-service:8086"
             - "--metrics.influxdb.database=geth"
