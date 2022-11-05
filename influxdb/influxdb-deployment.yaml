@@ -19,10 +19,10 @@ spec:
     spec:
       containers:
         - name: influxdb-pod
-          image: influxdb:2.5.1
+          image: influxdb:1.8
           volumeMounts:
             - name: influxdb-hdd
-              mountPath: "/var/lib/influxdb2"
+              mountPath: "/var/lib/influxdb"
           ports:
             - containerPort: 8086
               name: influxdb-port

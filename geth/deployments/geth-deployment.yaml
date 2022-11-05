@@ -23,6 +23,7 @@ spec:
           image: ethereum/client-go:stable
           args: 
             - "--mainnet"
+            - "--syncmode=full"
             - "--discovery.port=30304" # Custom UDP discovery port
             - "--datadir=/var/geth"
             - "--authrpc.addr=0.0.0.0"
@@ -39,19 +40,25 @@ spec:
             - "--http.corsdomain=*"
             - "--http.vhosts=*"
             - "--metrics"
-            - "--metrics.influxdbv2=true"
+            - "--metrics.influxdb=true"
             - "--metrics.influxdb.endpoint=http://influxdb-service:8086"
+            - "--metrics.influxdb.username=$(INFLUX_DB_USERNAME)"
+            - "--metrics.influxdb.password=$(INFLUX_DB_PASSWORD)"
             - "--metrics.influxdb.database=geth"
-            - "--metrics.influxdb.token=$(INFLUX_DB_TOKEN)"
-            - "--metrics.influxdb.bucket=geth-bucket"
-            - "--metrics.influxdb.organization=Crystal MEV"
-            - "--syncmode=full"
+            - "--metrics.influxdb.bucket=geth"
+            - "--metrics.influxdb.organization=crystal-mev"
           env:
-            - name: INFLUX_DB_TOKEN
+            - name: INFLUX_DB_USERNAME
               valueFrom:
                 configMapKeyRef:
                   name: influxdb-secret
-                  key: influxdb-token
+                  key: influxdbUsername
+                  optional: false
+            - name: INFLUX_DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: influxdb-secret
+                  key: influxdbPassword
                   optional: false
           resources:
             limits:
