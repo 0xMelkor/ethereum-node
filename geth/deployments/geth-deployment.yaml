@@ -45,8 +45,6 @@ spec:
             - "--metrics.influxdb.username=$(INFLUX_DB_USERNAME)"
             - "--metrics.influxdb.password=$(INFLUX_DB_PASSWORD)"
             - "--metrics.influxdb.database=geth"
-            - "--metrics.influxdb.bucket=geth"
-            - "--metrics.influxdb.organization=crystal-mev"
           env:
             - name: INFLUX_DB_USERNAME
               valueFrom:
