@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: influxdb-deployment
+  labels:
+    app: crystal-mev
+spec:
+  selector:
+    matchLabels:
+      app: crystal-mev
+      comp: influxdb-pod
+  serviceName: influxdb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: crystal-mev
+        comp: influxdb-pod
+    spec:
+      containers:
+        - name: influxdb-pod
+          image: influxdb:1.8
+          volumeMounts:
+            - name: influxdb-hdd
+              mountPath: "/var/lib/influxdb"
+          ports:
+            - containerPort: 8086
+              name: influxdb-port
+      volumes:
+        - name: influxdb-hdd
+          persistentVolumeClaim:
+            claimName: influxdb-claim

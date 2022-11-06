@@ -23,6 +23,7 @@ spec:
           image: ethereum/client-go:stable
           args: 
             - "--mainnet"
+            - "--syncmode=full"
             - "--discovery.port=30304" # Custom UDP discovery port
             - "--datadir=/var/geth"
             - "--authrpc.addr=0.0.0.0"
@@ -38,8 +39,25 @@ spec:
             - "--http.api=txpool,eth,net,web3,personal"
             - "--http.corsdomain=*"
             - "--http.vhosts=*"
-            - "--syncmode=full"
-            - "--vmodule=p2p=5"
+            - "--metrics"
+            - "--metrics.influxdb=true"
+            - "--metrics.influxdb.endpoint=http://influxdb-service:8086"
+            - "--metrics.influxdb.username=$(INFLUX_DB_USERNAME)"
+            - "--metrics.influxdb.password=$(INFLUX_DB_PASSWORD)"
+            - "--metrics.influxdb.database=geth"
+          env:
+            - name: INFLUX_DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: influxdb-secret
+                  key: influxdbUsername
+                  optional: false
+            - name: INFLUX_DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: influxdb-secret
+                  key: influxdbPassword
+                  optional: false
           resources:
             limits:
               cpu: 4000m
