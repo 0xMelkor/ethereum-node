@@ -58,13 +58,13 @@ spec:
                   name: influxdb-secret
                   key: influxdbPassword
                   optional: false
-          #resources:
-          #  limits:
-          #    cpu: 4000m
-          #    memory: 16Gi
-          #  requests:
-          #    cpu: 1500m
-          #    memory: 4Gi
+          resources:
+            limits:
+              cpu: 4000m
+              memory: 16Gi
+            requests:
+              cpu: 1500m
+              memory: 4Gi
           ports:
             - containerPort: 8545
               name: rpc-port

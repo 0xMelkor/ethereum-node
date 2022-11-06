@@ -32,13 +32,13 @@ spec:
             - "--network=mainnet"
             - "--execution-endpoint=http://geth-execution-service:8551"
             - "--execution-jwt=/etc/jwt/jwtsecret"
-          #resources:
-          #  limits:
-          #    cpu: 1500m
-          #    memory: 16Gi
-          #  requests:
-          #    cpu: 1500m
-          #    memory: 4Gi
+          resources:
+            limits:
+              cpu: 1500m
+              memory: 16Gi
+            requests:
+              cpu: 1500m
+              memory: 4Gi
           ports:
             - containerPort: 30404
               name: beacon-port-udp
