@@ -1,47 +1,47 @@
 steps:
 
-#- name: 'bhgedigital/envsubst'
-#  id: Secrets substitution - Lighthouse JWT 
-#  entrypoint: /bin/sh
-#  args: [
-#    '-c',
-#    'envsubst < geth/config/jwt-secret.yaml > jwt-secret.yaml',
-#    ]
-#  env:
-#    - 'GETH_AUTH_JWT=${_GETH_AUTH_JWT}'
-#
-#- name: 'bhgedigital/envsubst'
-#  id: Secrets substitution - InfluxDB 
-#  entrypoint: /bin/sh
-#  args: [
-#    '-c',
-#    'envsubst < geth/config/influxdb-secret.yaml > influxdb-secret.yaml; echo $$(cat influxdb-secret.yaml)'
-#    ]
-#  env:
-#    - 'INFLUX_DB_USERNAME=${_INFLUX_DB_USERNAME}'
-#    - 'INFLUX_DB_PASSWORD=${_INFLUX_DB_PASSWORD}'
-#
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply JWT secret
-#  args: ['apply', '-f', 'jwt-secret.yaml']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply InfluxDB secret
-#  args: ['apply', '-f', 'influxdb-secret.yaml']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply influxdb
-#  args: ['apply', '-f', 'influxdb']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+- name: 'bhgedigital/envsubst'
+  id: Secrets substitution - Lighthouse JWT 
+  entrypoint: /bin/sh
+  args: [
+    '-c',
+    'envsubst < geth/config/jwt-secret.yaml > jwt-secret.yaml',
+    ]
+  env:
+    - 'GETH_AUTH_JWT=${_GETH_AUTH_JWT}'
+
+- name: 'bhgedigital/envsubst'
+  id: Secrets substitution - InfluxDB 
+  entrypoint: /bin/sh
+  args: [
+    '-c',
+    'envsubst < geth/config/influxdb-secret.yaml > influxdb-secret.yaml; echo $$(cat influxdb-secret.yaml)'
+    ]
+  env:
+    - 'INFLUX_DB_USERNAME=${_INFLUX_DB_USERNAME}'
+    - 'INFLUX_DB_PASSWORD=${_INFLUX_DB_PASSWORD}'
+
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply JWT secret
+  args: ['apply', '-f', 'jwt-secret.yaml']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply InfluxDB secret
+  args: ['apply', '-f', 'influxdb-secret.yaml']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply influxdb
+  args: ['apply', '-f', 'influxdb']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Apply geth claims
@@ -50,26 +50,26 @@ steps:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
  
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply geth
-#  args: ['apply', '-f', 'geth/deployments']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply geth cluster IPs
-#  args: ['apply', '-f', 'geth/cluster-ip']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-#
-#- name: 'gcr.io/cloud-builders/kubectl'
-#  id: Apply geth node ports
-#  args: ['apply', '-f', 'geth/node-ports']
-#  env:
-#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply geth
+  args: ['apply', '-f', 'geth/deployments']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply geth cluster IPs
+  args: ['apply', '-f', 'geth/cluster-ip']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Apply geth node ports
+  args: ['apply', '-f', 'geth/node-ports']
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 options:
   logging: CLOUD_LOGGING_ONLY
