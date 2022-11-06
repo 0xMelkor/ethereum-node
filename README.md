@@ -2,7 +2,7 @@
 A Kubernetes project to deploy a PoS Ethereum full node on Google GKE using Geth "execution layer" and Lighthouse "consensus layer".
 
 
-![Cluster architecture](./docs/images/arch.png)
+![Cluster architecture](./docs/images/architecture.png)
 
 # InfluxDB 
 ```
