@@ -6,7 +6,8 @@ A Kubernetes project to deploy a PoS Ethereum full node on Google GKE using Geth
 
 # InfluxDB 
 ```
-CREATE USER "user" WITH PASSWORD 'password'
 CREATE DATABASE "geth"
+USE geth
+CREATE USER "user" WITH PASSWORD 'password'
 GRANT ALL ON "geth" TO "user"
 ```
