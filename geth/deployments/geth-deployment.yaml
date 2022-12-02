@@ -40,12 +40,12 @@ spec:
             - "--http.corsdomain=*"
             - "--http.vhosts=*"
             # Enable the following lines to collect metrics on InfluxDB
-            # - "--metrics"
-            # - "--metrics.influxdb=true"
-            # - "--metrics.influxdb.endpoint=http://influxdb-service:8086"
-            # - "--metrics.influxdb.username=$(INFLUX_DB_USERNAME)"
-            # - "--metrics.influxdb.password=$(INFLUX_DB_PASSWORD)"
-            # - "--metrics.influxdb.database=geth"
+            - "--metrics"
+            - "--metrics.influxdb=true"
+            - "--metrics.influxdb.endpoint=http://influxdb-service:8086"
+            - "--metrics.influxdb.username=$(INFLUX_DB_USERNAME)"
+            - "--metrics.influxdb.password=$(INFLUX_DB_PASSWORD)"
+            - "--metrics.influxdb.database=geth"
           env:
             - name: INFLUX_DB_USERNAME
               valueFrom:
