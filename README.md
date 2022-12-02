@@ -6,7 +6,7 @@ A Kubernetes project to deploy a PoS Ethereum full node on Google GKE using Geth
 
 This architecture ca be deployed running the `cloudbuild.yaml` file from a Google cloudbuild console.
 
-# InfluxDB
+## InfluxDB
 Geth can be instructed to send operational metrics to an InfluxDB instance. 
 
 After deploying InfluxDB, connect to the pod and create a database and a user `INFLUX_DB_USERNAME` with password `INFLUX_DB_PASSWORD`. Keep these data in a safe place. 
@@ -53,4 +53,12 @@ In order to collect geth metrics you need to enable corresponding lines in the t
  - "--metrics.influxdb.database=geth"
 ```
 
+## Expose the node 
+You can expose your node deploying the nginx pod. All the required configuration can be found under the `./nginx` folder.
+The current configuration exposes:
+* Geth RPC Http
+* Geth RPC WebSocket
+* Influx DB
+
+Nginx can be deployed running the `./nginx/cloudbuild.yaml` file from a Google cloudbuild console.
 
