@@ -39,6 +39,7 @@ spec:
             - "--http.api=txpool,eth,net,web3,personal"
             - "--http.corsdomain=*"
             - "--http.vhosts=*"
+            # Enable the following lines to collect metrics on InfluxDB
             - "--metrics"
             - "--metrics.influxdb=true"
             - "--metrics.influxdb.endpoint=http://influxdb-service:8086"
