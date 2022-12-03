@@ -14,7 +14,7 @@ After deploying InfluxDB, connect to the pod and create a database and a user `I
 ```bash
 kubectl get pods
 
-# Obtain someting like this
+# Obtain something like this
 NAME                                     READY   STATUS    RESTARTS      AGE
 geth-deployment-7f74d4fb96-tlhhg         1/1     Running   0             42h
 influxdb-deployment-0                    1/1     Running   0             42h
