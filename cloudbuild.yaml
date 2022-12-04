@@ -10,16 +10,16 @@ steps:
   env:
     - 'GETH_AUTH_JWT=${_GETH_AUTH_JWT}'
 
-- name: 'bhgedigital/envsubst'
-  id: Secrets substitution - InfluxDB 
-  entrypoint: /bin/sh
-  args: [
-    '-c',
-    'envsubst < geth/config/influxdb-secret.yaml > influxdb-secret.yaml; echo $$(cat influxdb-secret.yaml)'
-    ]
-  env:
-    - 'INFLUX_DB_USERNAME=${_INFLUX_DB_USERNAME}'
-    - 'INFLUX_DB_PASSWORD=${_INFLUX_DB_PASSWORD}'
+#- name: 'bhgedigital/envsubst'
+#  id: Secrets substitution - InfluxDB 
+#  entrypoint: /bin/sh
+#  args: [
+#    '-c',
+#    'envsubst < geth/config/influxdb-secret.yaml > influxdb-secret.yaml; echo $$(cat influxdb-secret.yaml)'
+#    ]
+#  env:
+#    - 'INFLUX_DB_USERNAME=${_INFLUX_DB_USERNAME}'
+#    - 'INFLUX_DB_PASSWORD=${_INFLUX_DB_PASSWORD}'
 
 
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -29,19 +29,19 @@ steps:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Apply InfluxDB secret
-  args: ['apply', '-f', 'influxdb-secret.yaml']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+#- name: 'gcr.io/cloud-builders/kubectl'
+#  id: Apply InfluxDB secret
+#  args: ['apply', '-f', 'influxdb-secret.yaml']
+#  env:
+#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Apply influxdb
-  args: ['apply', '-f', 'influxdb']
-  env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
+#- name: 'gcr.io/cloud-builders/kubectl'
+#  id: Apply influxdb
+#  args: ['apply', '-f', 'influxdb']
+#  env:
+#    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+#    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Apply geth claims

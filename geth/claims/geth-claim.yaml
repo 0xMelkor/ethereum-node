@@ -10,6 +10,6 @@ spec:
   storageClassName: premium-rwo
   resources:
     limits:
-      storage: 2000Gi 
+      storage: 2500Gi 
     requests: 
       storage: 2000Gi 
