@@ -62,3 +62,39 @@ The current configuration exposes:
 
 Nginx can be deployed running the `./nginx/cloudbuild.yaml` file from a Google cloudbuild console.
 
+## Track synchronization status
+Despite InfluxDB metrics allow to monitor the node status, Geth is not built to track metrics on the current sync status.
+We can achieve this connecting to the node IPC channel.
+
+```bash
+kubectl get pods
+
+# Obtain something like this
+NAME                                     READY   STATUS    RESTARTS      AGE
+geth-deployment-7f74d4fb96-tlhhg         1/1     Running   0             42h
+...
+
+# Obtain a shell on Geth
+kubectl exec -it geth-deployment-7f74d4fb96-tlhhg bin/sh
+
+# Connect to the node IPC
+root@geth-deployment-7f74d4fb96-tlhhg: geth attach var/geth/geth.ipc
+```
+
+Now you are connected the node IPC JavaSrcipt console. Paste the following code to poll the synchronization status.
+```javascript
+function syncStatus(currentBlock, highestBlock) {    
+    return {
+        percentage: ((currentBlock/highestBlock) * 100).toFixed(4),
+        blocksLeft: highestBlock - currentBlock
+    }
+}
+
+setInterval(() => {
+   let s = syncStatus(eth.syncing.currentBlock, eth.syncing.highestBlock);
+   console.log(`${s.percentage}% (blocks left ${s.blocksLeft})`);
+}, 1000);
+```
+
+
+
