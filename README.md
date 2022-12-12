@@ -81,7 +81,7 @@ kubectl exec -it geth-deployment-7f74d4fb96-tlhhg bin/sh
 root@geth-deployment-7f74d4fb96-tlhhg: geth attach var/geth/geth.ipc
 ```
 
-Now you are connected the node IPC JavaSrcipt console. Paste the following code to poll the synchronization status.
+Now you are connected the node IPC JavaScript console. Paste the following code to poll the synchronization status.
 ```javascript
 function syncStatus(currentBlock, highestBlock) {    
     return {
