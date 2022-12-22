@@ -4,7 +4,7 @@ metadata:
   name: nginx-ingress
   annotations:
     kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: "crystal-mev-proxy-ip"
+    kubernetes.io/ingress.global-global-ip-name: "crystal-mev-proxy-ip"
 spec:
   rules:
   - http:
